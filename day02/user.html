@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <h3>Get请求</h3>
+  <div id="showDataForm1">
+    <input type="text" id="name" name="name" /> <br>
+    <input type="text" id="age" name="age" /> <br>
+    <input type="submit" id="btn1" value="提交">
+  </div>
+  <h3>Post请求</h3>
+  <div id="showDataForm2">
+    <input type="text" id="name" name="name" /> <br>
+    <input type="text" id="age" name="age" /> <br>
+    <input type="submit" id="btn2" value="提交">
+  </div>
+</body>
+<script src="../jquery-2.1.0.js"></script>
+<script>
+  $("#btn1").click(function () {
+    var name = $("#name").val()
+    var age = $("#age").val()
+    $.ajax({
+      url: 'http://192.168.0.101:8080/user/create',
+      type: 'get',
+      data: {
+        name,
+        age
+      },
+      dataType: 'json',
+      success: function(res) {
+        console.log(res)
+      }
+    })
+  })
+  $("#btn2").click(function () {
+    var name = $("#name").val()
+    var age = $("#age").val()
+    $.ajax({
+      url: 'http://192.168.0.101:8080/user/update',
+      type: 'post',
+      data: {
+        name,
+        age
+      },
+      dataType: 'json',
+      success: function(res) {
+        console.log(res)
+      }
+    })
+  })
+</script>
+
+</html>
